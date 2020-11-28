@@ -8,25 +8,28 @@
 
 html, body {
     margin: 0px;
-    padding: 0px;
+    padding: 15px;
     font-family: "Merriweather", serif;
 }
 
-.paragraph-descr {
-  padding: 2px;
-  border-radius: 5px;
+h1 {
+  padding-left: .5em;
+  display: block;
+
 }
 
-#descr-1 {
-  background-color: lightblue;
+#a div {
+  display: inline-block;
+
+  vertical-align: top;
 }
 
-#descr-2 {
-  background-color: lightgreen;
-}
+.descr {
+ width: 25em;
+ display: inline-block;
+ padding: 1em;
 
-#descr-3 {
-  background-color: lightyellow;
+ text-align: top;
 }
 
 #chart {

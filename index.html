@@ -6,26 +6,29 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="options">
-            <h1>Hospitals in the United States</h1>
-            <div class="paragraph-descr" id="descr-1"><p>The spread of COVID-19 has shed light on the alarming lack of access to hospitals for those living in more sparsely populated regions of the country.</p></div>
-            <div class="paragraph-descr" id="descr-2"><p>While those in urban and coastal regions often have multiple options for facilities, those in rural or central areas frequently must travel hundreds of miles to obtain specialized care.<p></div>
-            <div class="paragraph-descr" id="descr-3"><p>This reality highlights the need for better infrastructure supporting telemedicine, which isn't covered by many insurers, as well as a strategic reassessment of the effectiveness of our distribution of hospitals and hospital services. <p></div>
-            <p>Use the filters below to hide or show different types of types of hospitals. </p>
-            <div id="filters">
-                <input type="checkbox" class="type--option" value="GENERAL ACUTE CARE" checked> General Acute Care <br>
-                <input type="checkbox" class="type--option" value="PSYCHIATRIC" checked> Psychiatric <br>
-                <input type="checkbox" class="type--option" value="CHILDREN" checked> Children <br>
-                <input type="checkbox" class="type--option" value="LONG TERM CARE" checked> Long Term Care <br>
-                <input type="checkbox" class="type--option" value="CRITICAL ACCESS" checked> Critical Access <br>
-                <input type="checkbox" class="type--option" value="REHABILITATION" checked> Rehabilitation <br>
-                <input type="checkbox" class="type--option" value="MILITARY" checked> Military <br>
-                <input type="checkbox" class="type--option" value="WOMEN" checked> Women <br>
-                <input type="checkbox" class="type--option" value="SPECIAL" checked> Special <br>
-                <input type="checkbox" class="type--option" value="CHRONIC DISEASE" checked> Chronic Disease <br>
-            </div>
+        <h1>Hospitals in the United States</h1>
+        <div id="a">
+          <div class="descr"><p>The spread of COVID-19 has shed light on the alarming lack of access to hospitals for those living in more sparsely populated regions of the country.</p></div>
+          <div class="descr"><p>While those in urban and coastal regions often have multiple options for facilities, those in rural or central areas frequently must travel hundreds of miles to obtain specialized care.</p></div>
+          <div class="descr"><p>This reality highlights the need for better infrastructure for telemedicine, which isn't covered by many insurers, and reassessment of our distribution of hospital services. </p></div>
         </div>
-        <div id="chart"></div>
+        <div id="chart">
+          <div id="options">
+              <p>Use the filters below to hide or show different types of types of hospitals. </p>
+              <div id="filters">
+                  <input type="checkbox" class="type--option" value="GENERAL ACUTE CARE" checked> General Acute Care <br>
+                  <input type="checkbox" class="type--option" value="PSYCHIATRIC" checked> Psychiatric <br>
+                  <input type="checkbox" class="type--option" value="CHILDREN" checked> Children <br>
+                  <input type="checkbox" class="type--option" value="LONG TERM CARE" checked> Long Term Care <br>
+                  <input type="checkbox" class="type--option" value="CRITICAL ACCESS" checked> Critical Access <br>
+                  <input type="checkbox" class="type--option" value="REHABILITATION" checked> Rehabilitation <br>
+                  <input type="checkbox" class="type--option" value="MILITARY" checked> Military <br>
+                  <input type="checkbox" class="type--option" value="WOMEN" checked> Women <br>
+                  <input type="checkbox" class="type--option" value="SPECIAL" checked> Special <br>
+                  <input type="checkbox" class="type--option" value="CHRONIC DISEASE" checked> Chronic Disease <br>
+              </div>
+          </div>
+        </div>
         <script src="./script.js"></script>
     </body>
 </html>
