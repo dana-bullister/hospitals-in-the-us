@@ -33,8 +33,8 @@ Promise.all(promises).then(function(data) {
 
     const projection = d3.geoMercator()
         .translate([width/2, height/2])
-        .center([-70.821001, 41.587268])
-        .scale(2500);
+        .center([-71.10990702699996, 42.36912500700004])
+        .scale(500000);
 
     const path = d3.geoPath()
         .projection(projection);
