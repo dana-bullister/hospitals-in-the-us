@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Zooming Example</title>
+        <meta charset="utf-8">
+        <title>Hospitals in the United States</title>
+        <link rel="stylesheet" href="style.css">        
         <script src="https://d3js.org/d3.v6.min.js"></script>
-        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>Hospitals in the United States</h1>
-        <div id="a">
-          <div class="descr"><p>The spread of <b>COVID-19</b> has shed light on the alarming lack of access to hospitals for those living in more sparsely populated regions of the country.</p></div>
-          <div class="descr"><p>While those in <b>urban and eastern</b> regions often have multiple options for facilities, those in <b>rural or western</b> areas frequently must travel hundreds of miles to obtain specialized care.</p></div>
-          <div class="descr"><p>This reality highlights the need for better <b>infrastructure for telemedicine</b>, which isn't covered by many insurers, and reassessment of our distribution of hospital services. </p></div>
+        <div id="descr-txt">
+          <p>The spread of <b>COVID-19</b> has shed light on the alarming lack of access to hospitals for those living in more sparsely populated regions of the country.</p>
+          <p>While those in <b>urban and eastern</b> regions often have multiple options for facilities, those in <b>rural or western</b> areas frequently must travel hundreds of miles to obtain specialized care.</p>
+          <p>This reality highlights the need for better <b>infrastructure for telemedicine</b>, which isn't covered by many insurers, and reassessment of our distribution of hospital services. </p>
         </div>
         <div id="chart">
           <div id="options">
-              <p>Use the filters below to hide or show different types of types of hospitals. </p>
+              <p>Use the filters below to hide or show different types of types of hospitals.</p>
               <div id="filters">
                   <input type="checkbox" class="type--option" value="GENERAL ACUTE CARE" checked> General Acute Care <br>
                   <input type="checkbox" class="type--option" value="PSYCHIATRIC" checked> Psychiatric <br>

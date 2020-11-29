@@ -18,17 +18,13 @@ h1 {
 
 }
 
-#a div {
+#descr-txt p {
   display: inline-block;
   vertical-align: top;
-}
-
-.descr {
- width: 25em;
- display: inline-block;
- padding: 1em;
-
- text-align: top;
+  width: 25em;
+  display: inline-block;
+  padding: 1em;
+  text-align: top;
 }
 
 #chart {
