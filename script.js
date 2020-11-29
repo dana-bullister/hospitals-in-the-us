@@ -46,8 +46,8 @@ Promise.all(promises).then(function(data) {
     .attr("d", path)
     .attr("class", "state");
 
-  const colorScale = d3.scaleOrdinal(d3.schemeTableau10)
-    .domain(["GENERAL ACUTE CARE", "PSYCHIATRIC", "CHILDREN", "LONG TERM CARE", "CRITICAL ACCESS", "REHABILITATION", "MILITARY", "WOMEN", "SPECIAL", "CHRONIC DISEASE"]);
+  const colorScale = d3.scaleOrdinal(d3.schemeSet1)
+    .domain(["LONG TERM CARE", "GENERAL ACUTE CARE", "PSYCHIATRIC", "CRITICAL ACCESS", "REHABILITATION", "CHILDREN", "MILITARY", "WOMEN", "SPECIAL", "CHRONIC DISEASE"]);
 
 
   const points = svg.selectAll("circle")
