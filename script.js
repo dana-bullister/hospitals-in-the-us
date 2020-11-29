@@ -1,9 +1,9 @@
 function parseCSV(d) {
   return {
-    name: d["Museum Name"],
+    name: d["Hospital Name"],
     lat: +d.Latitude,
     lon: +d.Longitude,
-    type: d["Museum Type"],
+    type: d["Hospital Type"],
     city: d["City"],
     state: d["State"]
   };
