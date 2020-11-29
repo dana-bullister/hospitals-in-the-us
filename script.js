@@ -10,7 +10,7 @@ function parseCSV(d) {
 }
 
 const promises = [
-  d3.csv("./data/northeast-museums.csv", parseCSV),
+  d3.csv("./data/hospitals.csv", parseCSV),
   d3.json("./geojson/gz_2010_us_040_00_20m.json")
 ];
 
