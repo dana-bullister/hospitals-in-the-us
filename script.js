@@ -46,7 +46,7 @@ Promise.all(promises).then(function(data) {
     .attr("d", path)
     .attr("class", "state");
 
-  const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
+  const colorScale = d3.scaleOrdinal(d3.schemeTableau10)
     .domain(["GENERAL ACUTE CARE", "PSYCHIATRIC", "CHILDREN", "LONG TERM CARE", "CRITICAL ACCESS", "REHABILITATION", "MILITARY", "WOMEN", "SPECIAL", "CHRONIC DISEASE"]);
 
 
