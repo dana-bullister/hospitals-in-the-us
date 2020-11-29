@@ -1,11 +1,11 @@
 function parseCSV(d) {
   return {
-    name: d["Hospital Name"],
-    lat: +d.Latitude,
-    lon: +d.Longitude,
-    type: d["Hospital Type"],
-    city: d["City"],
-    state: d["State"]
+    name: d["NAME"],
+    lat: +d.LATITUDE,
+    lon: +d.LONGITUDE,
+    type: d["TYPE"],
+    city: d["CITY"],
+    state: d["STATE"]
   };
 }
 
