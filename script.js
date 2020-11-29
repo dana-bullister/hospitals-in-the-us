@@ -123,17 +123,7 @@ Promise.all(promises).then(function(data) {
 
   });
 
-  //fff
-  /*
-  ADDING ZOOM
-
-  Maps are great candidates for zooming. But zooming is actually
-  a very complex task -- made especially complex in SVG!
-
-  D3 has a built-in module, d3.zoom() for handling zoom events.
-
-  */
-
+  // add map zooming
   const zoom = d3.zoom()
     .scaleExtent([1, 10])
     .on('zoom', zoomed);
@@ -146,8 +136,6 @@ Promise.all(promises).then(function(data) {
 
   function zoomed(e) {
 
-    console.log(e);
-
     k = e.transform.k;
     tX = e.transform.x;
     tY = e.transform.y;
@@ -156,11 +144,4 @@ Promise.all(promises).then(function(data) {
 
     svg.selectAll("circle").attr("r", 3 / k);
   }
-
-
-
-
-
-
-
 });
