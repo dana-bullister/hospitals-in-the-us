@@ -55,6 +55,15 @@ Promise.all(promises).then(function(data) {
   const colorScale = d3.scaleOrdinal(d3.schemeSet1)
     .domain(["LONG TERM CARE", "GENERAL ACUTE CARE", "PSYCHIATRIC", "CRITICAL ACCESS", "REHABILITATION", "CHILDREN", "MILITARY", "WOMEN", "SPECIAL", "CHRONIC DISEASE"]);
 
+  // style checkmark boxes in options to be the color of the respective points in the map
+  var all = document.getElementsByClassName('checkmark');
+  for (var i = 0; i < all.length; i++) {
+    let thisCheckMark = all[i];
+    let optionName = thisCheckMark.parentNode.firstElementChild.value;
+    let optionColor = colorScale(optionName);
+    thisCheckMark.style.background = optionColor;
+  }
+
   // bind hospital locations to data points rendered on the map, colored by
   // hospital type
   const points = svg.selectAll("circle")
