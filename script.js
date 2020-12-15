@@ -75,7 +75,7 @@ Promise.all(promises).then(function(data) {
     }).attr("cy", function(d) {
       var proj = projection([d.lon, d.lat]);
       return proj[1];
-    }).attr("r", 3)
+    }).attr("r", 2.2)
     .attr("fill", function(d) {
       return colorScale(d.type);
     })
@@ -109,7 +109,7 @@ Promise.all(promises).then(function(data) {
       tooltip.style("visibility", "hidden");
 
       d3.select(this)
-        .attr("r", 3 / k)
+        .attr("r", 2.2 / k)
         .attr("stroke", "none");
     });
 
@@ -152,7 +152,7 @@ Promise.all(promises).then(function(data) {
 
     svg.selectAll("*").attr("transform", e.transform);
 
-    svg.selectAll("circle").attr("r", 3 / k);
+    svg.selectAll("circle").attr("r", 2.2 / k);
     svg.selectAll("path").attr("stroke-width", 1 / k);
   }
 });
