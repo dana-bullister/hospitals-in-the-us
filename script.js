@@ -135,7 +135,7 @@ Promise.all(promises).then(function(data) {
 
   // add map zooming
   const zoom = d3.zoom()
-    .scaleExtent([1, 10])
+    .scaleExtent([1, 110])
     .on('zoom', zoomed);
 
   svg.call(zoom);
