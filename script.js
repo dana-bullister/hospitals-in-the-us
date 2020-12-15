@@ -79,7 +79,7 @@ Promise.all(promises).then(function(data) {
     .attr("fill", function(d) {
       return colorScale(d.type);
     })
-    .attr("fill-opacity", .5)
+    .attr("fill-opacity", .55)
 
   // add a tooltip to the chart
   const tooltip = d3.select("#chart")
