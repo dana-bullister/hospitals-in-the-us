@@ -153,5 +153,6 @@ Promise.all(promises).then(function(data) {
     svg.selectAll("*").attr("transform", e.transform);
 
     svg.selectAll("circle").attr("r", 3 / k);
+    svg.selectAll("path").attr("stroke-width", 1 / k);
   }
 });
