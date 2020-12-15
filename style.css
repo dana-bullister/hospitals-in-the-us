@@ -10,6 +10,7 @@ html, body {
   margin: 0px;
   padding: 15px;
   font-family: "Merriweather", serif;
+  font-size: 12pt;
 }
 
 h1 {
@@ -47,7 +48,7 @@ h1 {
 }
 
 #filters {
-    font-size: 14pt;
+    font-size: 12pt;
     line-height: 26pt;
 }
 
