@@ -111,6 +111,7 @@ h1 {
 .state {
     fill: lightgrey;
     stroke: black;
+    stroke-opacity: 0.8;
 }
 
 .tooltip {
