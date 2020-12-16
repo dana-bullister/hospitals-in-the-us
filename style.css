@@ -149,6 +149,10 @@ h1 {
   padding: 0;
 }
 
+button.selected {
+  background-color: rgb(174,174,174);
+}
+
 .axisLabel {
 font-size: 16pt;
 font-weight: bold;
