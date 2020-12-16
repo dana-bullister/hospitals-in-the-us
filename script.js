@@ -258,7 +258,7 @@ const xScale = d3.scaleLinear()
   .range([margin.left, width - margin.right]);
 
 const yScale = d3.scaleLinear()
-  .domain([0, 7000])
+  .domain([0, 500])
   .range([height - margin.bottom, margin.top]);
 
 const line = d3.line()
