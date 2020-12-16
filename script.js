@@ -391,21 +391,26 @@ circle.on("mouseover", function(e, d) {
 
 });
 
+////////////////////////////////////////////
 // data update buttons
+////////////////////////////////////////////
+
 d3.select("#total").on("click", function() {
 
   yScale.domain([0, 500])
+  // update the y-axis scale
     .range([height - margin.bottom, margin.top]);
 
   yAxis.transition()
     .duration(1500).call(d3.axisLeft().scale(yScale));
 
-  // update path element
+  // update the path variable
   path.datum(totalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
+  // update the data points
   let c = svg.selectAll("circle")
     .data(totalData, function(d) {
       return d.year;
@@ -441,17 +446,20 @@ d3.select("#total").on("click", function() {
 
 d3.select("#federal").on("click", function() {
 
+  // update the y-axis scale
   yScale.domain([0, 500])
     .range([height - margin.bottom, margin.top]);
 
   yAxis.transition()
     .duration(1500).call(d3.axisLeft().scale(yScale));
 
+  // update the path variable
   path.datum(federalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
+  // update the data points
   let c = svg.selectAll("circle")
     .data(federalData, function(d) {
       return d.year;
@@ -488,17 +496,20 @@ d3.select("#federal").on("click", function() {
 
 d3.select("#nonfederal").on("click", function() {
 
+  // update the y-axis scale
   yScale.domain([0, 9000])
     .range([height - margin.bottom, margin.top]);
 
   yAxis.transition()
     .duration(1500).call(d3.axisLeft().scale(yScale));
 
+  // update the path variable
   path.datum(nonFederalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
+  // update the data points
   let c = svg.selectAll("circle")
     .data(nonFederalData, function(d) {
       return d.year;
