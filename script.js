@@ -167,7 +167,7 @@ const width = document.querySelector("#lineChart").clientWidth;
 const height = document.querySelector("#lineChart").clientHeight;
 const margin = {
   top: 25,
-  left: 80,
+  left: 95,
   right: 100,
   bottom: 75
 };
