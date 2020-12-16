@@ -25,6 +25,15 @@ h1 {
   padding: 20px;
 }
 
+#descr-txt2 p {
+  vertical-align: top;
+  width: 100%;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 2em;
+  padding: 0;
+}
+
 #chart {
     width: 100%;
     height: 100vh;
