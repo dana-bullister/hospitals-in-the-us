@@ -116,7 +116,7 @@ h1 {
 }
 
 .county {
-  fill: lightgrey;
+  fill: transparent;
   stroke: green;
   stroke-opacity: 0.8;
 }
