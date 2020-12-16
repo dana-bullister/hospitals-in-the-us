@@ -115,6 +115,12 @@ h1 {
     stroke-opacity: 0.8;
 }
 
+.county {
+    fill: lightgrey;
+    stroke: lightgrey;
+    stroke-opacity: .1;
+}
+
 .tooltip {
     position: absolute;
     visibility: hidden;
