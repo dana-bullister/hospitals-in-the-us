@@ -23,8 +23,8 @@ Promise.all(promises).then(function(data) {
 
   // store the data as a variables
   const hospitals = data[0];
-  const geoData = data[1];
-  const geoData2 = data[2];
+  const geoDataStates = data[1];
+  const geoDataCounties = data[2];
 
   // store values for chart dimensions
   const width = document.querySelector("#chart").clientWidth;
@@ -36,18 +36,18 @@ Promise.all(promises).then(function(data) {
     .attr("width", width)
     .attr("height", height);
 
-  // configure geoData projection and presentation
+  // configure geo data projection and presentation
   const projection = d3.geoMercator()
     .translate([width / 2, height / 2])
     .center([-83, 35])
     .scale(800);
 
-  // visually render the geoData
+  // visually render the geo data
   const path = d3.geoPath()
     .projection(projection);
 
   svg.selectAll("path")
-    .data(geoData.features.concat(geoData2.features))
+    .data(geoDataStates.features.concat(geoDataCounties.features))
     .enter()
     .append("path")
     .attr("d", path)
