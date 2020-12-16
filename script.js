@@ -27,11 +27,11 @@ Promise.all(promises).then(function(data) {
   const geoDataCounties = data[2];
 
   // store values for chart dimensions
-  const width = document.querySelector("#chart").clientWidth;
-  const height = document.querySelector("#chart").clientHeight;
+  const width = document.querySelector("#map-chart").clientWidth;
+  const height = document.querySelector("#map-chart").clientHeight;
 
   // add chart svg to appropriate div with the same dimensions
-  const svg = d3.select("#chart")
+  const svg = d3.select("#map-chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -88,7 +88,7 @@ Promise.all(promises).then(function(data) {
     .attr("fill-opacity", .55)
 
   // add a tooltip to the chart
-  const tooltip = d3.select("#chart")
+  const tooltip = d3.select("#map-chart")
     .append("div")
     .attr("class", "tooltip");
 
