@@ -254,11 +254,11 @@ const nonFederalData = [{
 ];
 
 const xScale = d3.scaleLinear()
-  .domain([1998, 2012])
+  .domain([1975, 2015])
   .range([margin.left, width - margin.right]);
 
 const yScale = d3.scaleLinear()
-  .domain([0, 700000])
+  .domain([0, 7000])
   .range([height - margin.bottom, margin.top]);
 
 const line = d3.line()
