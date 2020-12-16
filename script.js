@@ -293,6 +293,128 @@ const nonFederalData = [{
   }
 ];
 
+const communityData = [{
+    year: 1975,
+    numHospitals: 5875
+  },
+  {
+    year: 1980,
+    numHospitals: 5830
+  },
+  {
+    year: 1990,
+    numHospitals: 5384
+  },
+  {
+    year: 2000,
+    numHospitals: 4915
+  },
+  {
+    year: 2005,
+    numHospitals: 4936
+  },
+  {
+    year: 2010,
+    numHospitals: 4985
+  },
+  {
+    year: 2013,
+    numHospitals: 4974
+  },
+  {
+    year: 2014,
+    numHospitals: 4926
+  },
+  {
+    year: 2015,
+    numHospitals: 4862
+  },
+  {
+    year: ,
+    numHospitals:
+  }
+];
+
+const nonProfitData = [{
+    year: 1975,
+    numHospitals: 3339
+  },
+  {
+    year: 1980,
+    numHospitals: 3322
+  },
+  {
+    year: 1990,
+    numHospitals: 3191
+  },
+  {
+    year: 2000,
+    numHospitals: 3003
+  },
+  {
+    year: 2005,
+    numHospitals: 2958
+  },
+  {
+    year: 2010,
+    numHospitals: 2904
+  },
+  {
+    year: 2013,
+    numHospitals: 2904
+  },
+  {
+    year: 2014,
+    numHospitals: 2870
+  },
+  {
+    year: 2015,
+    numHospitals: 2845
+  },
+  {
+    year: ,
+    numHospitals:
+  }
+];
+
+const stateLocalGovData = [{
+    year: 1975,
+    numHospitals: 1761
+  },
+  {
+    year: 1980,
+    numHospitals: 1778
+  },
+  {
+    year: 1990,
+    numHospitals: 1444
+  },
+  {
+    year: 2000,
+    numHospitals: 1163
+  },
+  {
+    year: 2005,
+    numHospitals: 1110
+  },
+  {
+    year: 2010,
+    numHospitals: 1068
+  },
+  {
+    year: 2013,
+    numHospitals: 1010
+  },
+  {
+    year: 2014,
+    numHospitals: 1003
+  },
+  {
+    year: 2015,
+    numHospitals: 983
+  }
+];
+
 // define scales
 const xScale = d3.scaleLinear()
   .domain([1975, 2015])
