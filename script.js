@@ -397,8 +397,8 @@ circle.on("mouseover", function(e, d) {
 
 d3.select("#total").on("click", function() {
 
-  yScale.domain([0, 500])
   // update the y-axis scale
+  yScale.domain([0, 9000])
     .range([height - margin.bottom, margin.top]);
 
   yAxis.transition()
