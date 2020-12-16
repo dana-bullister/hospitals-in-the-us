@@ -47,11 +47,11 @@ Promise.all(promises).then(function(data) {
     .projection(projection);
 
   svg.selectAll("path")
-    .data(geoDataStates.features.concat(geoDataCounties.features))
+    .data(geoDataStates.features.concat(geoDataCounties.features)) // concatenate state and county border data
     .enter()
     .append("path")
     .attr("d", path)
-    .attr("class", function(d) {
+    .attr("class", function(d) { // tag each border feature as either corresponding to a state or a county
       return d.featureType;
     });
 
