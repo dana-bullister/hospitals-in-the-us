@@ -346,6 +346,7 @@ let circle = svg.selectAll("circle")
   .attr("r", 10)
   .attr("fill", "rgb(55, 126, 184)");
 
+// add axes labels
 svg.append("text")
   .attr("class", "axisLabel")
   .attr("x", width / 2)
@@ -361,13 +362,12 @@ svg.append("text")
   .attr("transform", "rotate(-90)")
   .text("Number of Hospitals");
 
+// create tooltip
 const tooltip = d3.select("#lineChart")
   .append("div")
   .attr("class", "tooltip");
 
 circle.on("mouseover", function(e, d) {
-
-  console.log(d);
 
   let cx = +d3.select(this).attr("cx");
   let cy = +d3.select(this).attr("cy");
@@ -391,6 +391,7 @@ circle.on("mouseover", function(e, d) {
 
 });
 
+// data update buttons
 d3.select("#total").on("click", function() {
 
   yScale.domain([0, 500])
@@ -399,6 +400,7 @@ d3.select("#total").on("click", function() {
   yAxis.transition()
     .duration(1500).call(d3.axisLeft().scale(yScale));
 
+  // update path element
   path.datum(totalData)
     .transition()
     .duration(1500)
