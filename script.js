@@ -396,7 +396,7 @@ d3.select("#federal").on("click", function() {
 
 d3.select("#nonfederal").on("click", function() {
 
-  yScale.domain([0, 7000])
+  yScale.domain([0, 9000])
     .range([height - margin.bottom, margin.top]);
 
   yAxis.transition()
