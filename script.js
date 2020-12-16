@@ -166,8 +166,8 @@ Promise.all(promises).then(function(data) {
 /*
   SETTING UP THE SVG CANVAS
   */
-const width = document.querySelector("#chart2").clientWidth;
-const height = document.querySelector("#chart2").clientHeight;
+const width = document.querySelector("#lineChart").clientWidth;
+const height = document.querySelector("#lineChart").clientHeight;
 const margin = {
   top: 25,
   left: 175,
@@ -178,7 +178,7 @@ const margin = {
 /*
 CREATE THE SVG CANVAS
 */
-const svg = d3.select("#chart2")
+const svg = d3.select("#lineChart")
   .append("svg")
   .attr("width", width)
   .attr("height", height);
@@ -187,14 +187,14 @@ const svg = d3.select("#chart2")
 DEFINE DATA SET
 
 The following data set shows total honey production per year in
-the state of Vermont; these data are extracted from the following
+the state of Federal Data; these data are extracted from the following
 data set on Kaggle:
 
 https://www.kaggle.com/jessicali9530/honey-production
 
 */
 
-const vermontHoney = [{
+const federalData = [{
     year: 1998,
     production: 384000
   },
@@ -256,7 +256,7 @@ const vermontHoney = [{
   }
 ];
 
-const maineHoney = [{
+const nonFederalData = [{
     year: 1998,
     production: 260000
   },
@@ -345,7 +345,7 @@ const yScale = d3.scaleLinear()
 /*
 CREATE A LINE GENERATOR
 
-To create a line chart2 in D3, we need to use a "line generator"
+To create a line lineChart in D3, we need to use a "line generator"
 function that's built into the D3 language.
 
 This line generator function can be invoked with d3.line().
@@ -401,7 +401,7 @@ DRAW THE MARKS
 
 In this visualization, we will do two things:
 
-We'll first draw the line for our line chart2, by appending a
+We'll first draw the line for our line lineChart, by appending a
 new "path" element to the SVG canvas and computing its geometry
 (through the "d" attribute) with the help of our line generator
 function above.
@@ -413,7 +413,7 @@ later create a tooltip with these points.
 */
 
 let path = svg.append("path")
-  .datum(vermontHoney)
+  .datum(federalData)
   .attr("d", function(d) {
     return line(d);
   })
@@ -422,7 +422,7 @@ let path = svg.append("path")
   .attr("stroke-width", 2);
 
 let circle = svg.selectAll("circle")
-  .data(vermontHoney)
+  .data(federalData)
   .enter()
   .append("circle")
   .attr("cx", function(d) {
@@ -457,7 +457,7 @@ svg.append("text")
 /*
 SIMPLE TOOLTIP
 
-We begin by creating a new div element inside the #chart2 container,
+We begin by creating a new div element inside the #lineChart container,
 giving it class 'tooltip'; note that this newly created div inherits
 (receives) the CSS properties defined by the .tooltip { ... } rule
 in the stylesheet
@@ -465,7 +465,7 @@ in the stylesheet
 */
 
 
-const tooltip = d3.select("#chart2")
+const tooltip = d3.select("#lineChart")
   .append("div")
   .attr("class", "tooltip");
 
@@ -511,33 +511,33 @@ circle.on("mouseover", function(e, d) {
 
 /* DATA UPDATE
 
-These buttons will toggle between data for Maine and data for Vermont.
+These buttons will toggle between data for Nonfederal Data and data for Federal Data.
 
 NOTE: There are no new circles to draw or old circles to remove with the data update, but
 I'm including both .enter() and .exit() selection operations here anyway.
 
 This demonstration applies a data update transition to the <path> element for
-the line chart2, AND an update to the <circle> elements drawn on top of the
+the line lineChart, AND an update to the <circle> elements drawn on top of the
 line (for the tooltip). If you don't need the tooltips, then you don't
 need to have circle points (and thus don't need to do a data update on
 the circles).
 */
 
-d3.select("#vermont").on("click", function() {
+d3.select("#federal").on("click", function() {
 
   // Updates the <path> -- note that all we need
   // to do is retrieve the EXISTING <path> element,
   // bind a new dataset with datum() (NOT .data()),
   // and then transition to a new value for the "d"
   // attribute that generates the line
-  path.datum(vermontHoney)
+  path.datum(federalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
   // Update the <circle> elements
   let c = svg.selectAll("circle")
-    .data(vermontHoney, function(d) {
+    .data(federalData, function(d) {
       return d.year;
     });
 
@@ -570,21 +570,21 @@ d3.select("#vermont").on("click", function() {
 });
 
 
-d3.select("#maine").on("click", function() {
+d3.select("#nonfederal").on("click", function() {
 
   // Updates the <path> -- note that all we need
   // to do is retrieve the EXISTING <path> element,
   // bind a new dataset with datum() (NOT .data()),
   // and then transition to a new value for the "d"
   // attribute that generates the line
-  path.datum(maineHoney)
+  path.datum(nonFederalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
   // Update the <circle> elements
   let c = svg.selectAll("circle")
-    .data(maineHoney, function(d) {
+    .data(nonFederalData, function(d) {
       return d.year;
     });
 
