@@ -116,9 +116,9 @@ h1 {
 }
 
 .county {
-    fill: lightgrey;
-    stroke: lightgrey;
-    stroke-opacity: .1;
+  fill: lightgrey;
+  stroke: green;
+  stroke-opacity: 0.8;
 }
 
 .tooltip {
