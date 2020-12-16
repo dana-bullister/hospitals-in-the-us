@@ -344,7 +344,7 @@ let circle = svg.selectAll("circle")
     return yScale(d.numHospitals);
   })
   .attr("r", 10)
-  .attr("fill", "steelblue");
+  .attr("fill", "rgb(55, 126, 184)");
 
 svg.append("text")
   .attr("class", "axisLabel")
@@ -417,7 +417,7 @@ d3.select("#total").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue")
+    .attr("fill", "rgb(55, 126, 184)")
     .merge(c)
     .transition()
     .duration(1500)
@@ -428,7 +428,7 @@ d3.select("#total").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue");
+    .attr("fill", "rgb(55, 126, 184)");
 
   c.exit()
     .transition()
@@ -463,7 +463,7 @@ d3.select("#federal").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue")
+    .attr("fill", "rgb(55, 126, 184)")
     .merge(c)
     .transition()
     .duration(1500)
@@ -474,7 +474,7 @@ d3.select("#federal").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue");
+    .attr("fill", "rgb(55, 126, 184)");
 
   c.exit()
     .transition()
@@ -510,7 +510,7 @@ d3.select("#nonfederal").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue")
+    .attr("fill", "rgb(55, 126, 184)")
     .merge(c)
     .transition()
     .duration(1500)
@@ -521,7 +521,7 @@ d3.select("#nonfederal").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue");
+    .attr("fill", "rgb(55, 126, 184)");
 
   c.exit()
     .transition()
@@ -556,7 +556,7 @@ d3.select("#total").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue")
+    .attr("fill", "rgb(55, 126, 184)")
     .merge(c)
     .transition()
     .duration(1500)
@@ -567,7 +567,7 @@ d3.select("#total").on("click", function() {
       return yScale(d.numHospitals);
     })
     .attr("r", 10)
-    .attr("fill", "steelblue");
+    .attr("fill", "rgb(55, 126, 184)");
 
   c.exit()
     .transition()
