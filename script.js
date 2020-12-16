@@ -217,44 +217,6 @@ const totalData = [{
   }
 ];
 
-const federalData = [{
-    year: 1975,
-    numHospitals: 382
-  },
-  {
-    year: 1980,
-    numHospitals: 359
-  },
-  {
-    year: 1990,
-    numHospitals: 337
-  },
-  {
-    year: 2000,
-    numHospitals: 245
-  },
-  {
-    year: 2005,
-    numHospitals: 226
-  },
-  {
-    year: 2010,
-    numHospitals: 213
-  },
-  {
-    year: 2013,
-    numHospitals: 213
-  },
-  {
-    year: 2014,
-    numHospitals: 213
-  },
-  {
-    year: 2015,
-    numHospitals: 212
-  }
-];
-
 const nonFederalData = [{
     year: 1975,
     numHospitals: 6774
@@ -445,6 +407,44 @@ const forProfitData = [{
   }
 ];
 
+const federalData = [{
+    year: 1975,
+    numHospitals: 382
+  },
+  {
+    year: 1980,
+    numHospitals: 359
+  },
+  {
+    year: 1990,
+    numHospitals: 337
+  },
+  {
+    year: 2000,
+    numHospitals: 245
+  },
+  {
+    year: 2005,
+    numHospitals: 226
+  },
+  {
+    year: 2010,
+    numHospitals: 213
+  },
+  {
+    year: 2013,
+    numHospitals: 213
+  },
+  {
+    year: 2014,
+    numHospitals: 213
+  },
+  {
+    year: 2015,
+    numHospitals: 212
+  }
+];
+
 // define scales
 const xScale = d3.scaleLinear()
   .domain([1975, 2015])
@@ -599,60 +599,6 @@ d3.select("#total").on("click", function() {
     .attr("r", 0)
     .remove();
 });
-
-d3.select("#federal").on("click", function() {
-
-  // add "selected" class to just this button
-  d3.selectAll("button").attr("class", null);
-  d3.select("#federal").attr("class", "selected");
-
-  // update the y-axis scale
-  yScale.domain([0, 500])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
-
-  // update the path variable
-  path.datum(federalData)
-    .transition()
-    .duration(1500)
-    .attr("d", line);
-
-  // update the data points
-  let c = svg.selectAll("circle")
-    .data(federalData, function(d) {
-      return d.year;
-    });
-
-  c.enter().append("circle")
-    .attr("cx", function(d) {
-      return xScale(d.year);
-    })
-    .attr("cy", function(d) {
-      return yScale(d.numHospitals);
-    })
-    .attr("r", 10)
-    .attr("fill", "rgb(55, 126, 184)")
-    .merge(c)
-    .transition()
-    .duration(1500)
-    .attr("cx", function(d) {
-      return xScale(d.year);
-    })
-    .attr("cy", function(d) {
-      return yScale(d.numHospitals);
-    })
-    .attr("r", 10)
-    .attr("fill", "rgb(55, 126, 184)");
-
-  c.exit()
-    .transition()
-    .duration(1500)
-    .attr("r", 0)
-    .remove();
-});
-
 
 d3.select("#nonfederal").on("click", function() {
 
@@ -888,6 +834,59 @@ d3.select("#forProfit").on("click", function() {
   // update the data points
   let c = svg.selectAll("circle")
     .data(forProfitData, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)")
+    .merge(c)
+    .transition()
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
+
+d3.select("#federal").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#federal").attr("class", "selected");
+
+  // update the y-axis scale
+  yScale.domain([0, 500])
+    .range([height - margin.bottom, margin.top]);
+
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
+
+  // update the path variable
+  path.datum(federalData)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // update the data points
+  let c = svg.selectAll("circle")
+    .data(federalData, function(d) {
       return d.year;
     });
 
