@@ -407,6 +407,44 @@ const stateLocalGovData = [{
   }
 ];
 
+const forProfitData = [{
+    year: 1975,
+    numHospitals: 775
+  },
+  {
+    year: 1980,
+    numHospitals: 730
+  },
+  {
+    year: 1990,
+    numHospitals: 749
+  },
+  {
+    year: 2000,
+    numHospitals: 749
+  },
+  {
+    year: 2005,
+    numHospitals: 868
+  },
+  {
+    year: 2010,
+    numHospitals: 1013
+  },
+  {
+    year: 2013,
+    numHospitals: 1060
+  },
+  {
+    year: 2014,
+    numHospitals: 1053
+  },
+  {
+    year: 2015,
+    numHospitals: 1034
+  }
+];
+
 // define scales
 const xScale = d3.scaleLinear()
   .domain([1975, 2015])
@@ -797,6 +835,59 @@ d3.select("#stateLocalGov").on("click", function() {
   // update the data points
   let c = svg.selectAll("circle")
     .data(stateLocalGovData, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)")
+    .merge(c)
+    .transition()
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
+
+d3.select("#forProfit").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#forProfit").attr("class", "selected");
+
+  // update the y-axis scale
+  yScale.domain([0, 9000])
+    .range([height - margin.bottom, margin.top]);
+
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
+
+  // update the path variable
+  path.datum(forProfitData)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // update the data points
+  let c = svg.selectAll("circle")
+    .data(forProfitData, function(d) {
       return d.year;
     });
 
