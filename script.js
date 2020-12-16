@@ -397,6 +397,10 @@ circle.on("mouseover", function(e, d) {
 
 d3.select("#total").on("click", function() {
 
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#total").attr("class", "selected");
+
   // update the y-axis scale
   yScale.domain([0, 9000])
     .range([height - margin.bottom, margin.top]);
@@ -445,6 +449,10 @@ d3.select("#total").on("click", function() {
 });
 
 d3.select("#federal").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#federal").attr("class", "selected");
 
   // update the y-axis scale
   yScale.domain([0, 500])
@@ -495,6 +503,10 @@ d3.select("#federal").on("click", function() {
 
 
 d3.select("#nonfederal").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#nonfederal").attr("class", "selected");
 
   // update the y-axis scale
   yScale.domain([0, 9000])
