@@ -328,10 +328,6 @@ const communityData = [{
   {
     year: 2015,
     numHospitals: 4862
-  },
-  {
-    year: ,
-    numHospitals:
   }
 ];
 
@@ -370,10 +366,6 @@ const nonProfitData = [{
   {
     year: 2015,
     numHospitals: 2845
-  },
-  {
-    year: ,
-    numHospitals:
   }
 ];
 
