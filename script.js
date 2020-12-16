@@ -349,6 +349,9 @@ circle.on("mouseover", function(e, d) {
 
 d3.select("#federal").on("click", function() {
 
+  yScale.domain([0, 500])
+    .range([height - margin.bottom, margin.top]);
+
   path.datum(federalData)
     .transition()
     .duration(1500)
@@ -389,6 +392,9 @@ d3.select("#federal").on("click", function() {
 
 
 d3.select("#nonfederal").on("click", function() {
+
+  yScale.domain([0, 7000])
+    .range([height - margin.bottom, margin.top]);
 
   path.datum(nonFederalData)
     .transition()
