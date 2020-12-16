@@ -178,126 +178,78 @@ const svg = d3.select("#lineChart")
   .attr("height", height);
 
 const federalData = [{
-    year: 1998,
-    production: 384000
+    year: 1975,
+    production: 382
   },
   {
-    year: 1999,
-    production: 396000
+    year: 1980,
+    production: 359
+  },
+  {
+    year: 1990,
+    production: 337
   },
   {
     year: 2000,
-    production: 413000
-  },
-  {
-    year: 2001,
-    production: 567000
-  },
-  {
-    year: 2002,
-    production: 623000
-  },
-  {
-    year: 2003,
-    production: 581000
-  },
-  {
-    year: 2004,
-    production: 408000
+    production: 245
   },
   {
     year: 2005,
-    production: 546000
-  },
-  {
-    year: 2006,
-    production: 336000
-  },
-  {
-    year: 2007,
-    production: 320000
-  },
-  {
-    year: 2008,
-    production: 330000
-  },
-  {
-    year: 2009,
-    production: 245000
+    production: 226
   },
   {
     year: 2010,
-    production: 260000
+    production: 213
   },
   {
-    year: 2011,
-    production: 172000
+    year: 2013,
+    production: 213
   },
   {
-    year: 2012,
-    production: 240000
+    year: 2014,
+    production: 213
+  },
+  {
+    year: 2015,
+    production: 212
   }
 ];
 
 const nonFederalData = [{
-    year: 1998,
-    production: 260000
+    year: 1975,
+    production: 6774
   },
   {
-    year: 1999,
-    production: 308000
+    year: 1980,
+    production: 6606
+  },
+  {
+    year: 1990,
+    production: 6312
   },
   {
     year: 2000,
-    production: 231000
-  },
-  {
-    year: 2001,
-    production: 220000
-  },
-  {
-    year: 2002,
-    production: 451000
-  },
-  {
-    year: 2003,
-    production: 264000
-  },
-  {
-    year: 2004,
-    production: 217000
+    production: 5565
   },
   {
     year: 2005,
-    production: 208000
-  },
-  {
-    year: 2006,
-    production: 253000
-  },
-  {
-    year: 2007,
-    production: 234000
-  },
-  {
-    year: 2008,
-    production: 294000
-  },
-  {
-    year: 2009,
-    production: 300000
+    production: 5530
   },
   {
     year: 2010,
-    production: 205000
+    production: 5541
   },
   {
-    year: 2011,
-    production: 120000
+    year: 2013,
+    production: 5473
   },
   {
-    year: 2012,
-    production: 136000
+    year: 2014,
+    production: 5414
+  },
+  {
+    year: 2015,
+    production: 5352
   }
 ];
 
