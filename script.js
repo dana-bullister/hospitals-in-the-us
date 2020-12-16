@@ -329,7 +329,7 @@ let path = svg.append("path")
   .attr("d", function(d) {
     return line(d);
   })
-  .attr("stroke", "steelblue")
+  .attr("stroke", "rgb(55, 126, 184)")
   .attr("fill", "none")
   .attr("stroke-width", 2);
 
