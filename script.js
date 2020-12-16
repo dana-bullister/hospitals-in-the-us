@@ -253,6 +253,44 @@ const nonFederalData = [{
   }
 ];
 
+const totalData = [{
+    year: 1975,
+    numHospitals: 7156
+  },
+  {
+    year: 1980,
+    numHospitals: 6965
+  },
+  {
+    year: 1990,
+    numHospitals: 6649
+  },
+  {
+    year: 2000,
+    numHospitals: 5810
+  },
+  {
+    year: 2005,
+    numHospitals: 5756
+  },
+  {
+    year: 2010,
+    numHospitals: 5754
+  },
+  {
+    year: 2013,
+    numHospitals: 5686
+  },
+  {
+    year: 2014,
+    numHospitals: 5627
+  },
+  {
+    year: 2015,
+    numHospitals: 5564
+  }
+];
+
 const xScale = d3.scaleLinear()
   .domain([1975, 2015])
   .range([margin.left, width - margin.right]);
@@ -409,6 +447,52 @@ d3.select("#nonfederal").on("click", function() {
 
   let c = svg.selectAll("circle")
     .data(nonFederalData, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "steelblue")
+    .merge(c)
+    .transition()
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "steelblue");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
+
+d3.select("#total").on("click", function() {
+
+  yScale.domain([0, 9000])
+    .range([height - margin.bottom, margin.top]);
+
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
+
+  path.datum(totalData)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  let c = svg.selectAll("circle")
+    .data(totalData, function(d) {
       return d.year;
     });
 
