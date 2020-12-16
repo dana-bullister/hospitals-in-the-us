@@ -14,8 +14,8 @@ function parseCsv(d) {
 // array of promises comprised of reading in data files
 const promises = [
   d3.csv("./data/hospitals.csv", parseCsv),
-  d3.json("./geojson/gz_2010_us_040_00_20m.json"),
-  d3.json("./geojson/gz_2010_us_050_00_500k.json")
+  d3.json("./geojson/2010_us_state_border_data.json"),
+  d3.json("./geojson/2010_us_county_border_data.json")
 ];
 
 // read in data files
