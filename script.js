@@ -553,13 +553,6 @@ d3.select("#total").on("click", function() {
   d3.selectAll("button").attr("class", null);
   d3.select("#total").attr("class", "selected");
 
-  // update the y-axis scale
-  yScale.domain([0, 9000])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
-
   // update the path variable
   path.datum(totalData)
     .transition()
@@ -605,13 +598,6 @@ d3.select("#nonfederal").on("click", function() {
   // add "selected" class to just this button
   d3.selectAll("button").attr("class", null);
   d3.select("#nonfederal").attr("class", "selected");
-
-  // update the y-axis scale
-  yScale.domain([0, 9000])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
 
   // update the path variable
   path.datum(nonFederalData)
@@ -659,13 +645,6 @@ d3.select("#community").on("click", function() {
   d3.selectAll("button").attr("class", null);
   d3.select("#community").attr("class", "selected");
 
-  // update the y-axis scale
-  yScale.domain([0, 9000])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
-
   // update the path variable
   path.datum(communityData)
     .transition()
@@ -711,13 +690,6 @@ d3.select("#nonProfit").on("click", function() {
   // add "selected" class to just this button
   d3.selectAll("button").attr("class", null);
   d3.select("#nonProfit").attr("class", "selected");
-
-  // update the y-axis scale
-  yScale.domain([0, 9000])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
 
   // update the path variable
   path.datum(nonProfitData)
@@ -765,13 +737,6 @@ d3.select("#stateLocalGov").on("click", function() {
   d3.selectAll("button").attr("class", null);
   d3.select("#stateLocalGov").attr("class", "selected");
 
-  // update the y-axis scale
-  yScale.domain([0, 9000])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
-
   // update the path variable
   path.datum(stateLocalGovData)
     .transition()
@@ -818,13 +783,6 @@ d3.select("#forProfit").on("click", function() {
   d3.selectAll("button").attr("class", null);
   d3.select("#forProfit").attr("class", "selected");
 
-  // update the y-axis scale
-  yScale.domain([0, 9000])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
-
   // update the path variable
   path.datum(forProfitData)
     .transition()
@@ -870,13 +828,6 @@ d3.select("#federal").on("click", function() {
   // add "selected" class to just this button
   d3.selectAll("button").attr("class", null);
   d3.select("#federal").attr("class", "selected");
-
-  // update the y-axis scale
-  yScale.domain([0, 500])
-    .range([height - margin.bottom, margin.top]);
-
-  yAxis.transition()
-    .duration(1500).call(d3.axisLeft().scale(yScale));
 
   // update the path variable
   path.datum(federalData)
