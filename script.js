@@ -163,6 +163,7 @@ Promise.all(promises).then(function(data) {
   }
 });
 
+// set up svg canvas formatting
 const width = document.querySelector("#lineChart").clientWidth;
 const height = document.querySelector("#lineChart").clientHeight;
 const margin = {
@@ -177,6 +178,7 @@ const svg = d3.select("#lineChart")
   .attr("width", width)
   .attr("height", height);
 
+// define data (taken from the CDC National Center for Health Statistics https://www.cdc.gov/nchs/data/hus/2017/089.pdf)
 const totalData = [{
     year: 1975,
     numHospitals: 7156
@@ -291,6 +293,7 @@ const nonFederalData = [{
   }
 ];
 
+// define scales
 const xScale = d3.scaleLinear()
   .domain([1975, 2015])
   .range([margin.left, width - margin.right]);
@@ -299,6 +302,7 @@ const yScale = d3.scaleLinear()
   .domain([0, 9000])
   .range([height - margin.bottom, margin.top]);
 
+// define line generator
 const line = d3.line()
   .x(function(d) {
     return xScale(d.year);
@@ -308,6 +312,7 @@ const line = d3.line()
   })
   .curve(d3.curveLinear);
 
+// create axes
 const xAxis = svg.append("g")
   .attr("class", "axis")
   .attr("transform", `translate(0,${height-margin.bottom})`)
@@ -318,6 +323,7 @@ const yAxis = svg.append("g")
   .attr("transform", `translate(${margin.left},0)`)
   .call(d3.axisLeft().scale(yScale));
 
+// draw the marks
 let path = svg.append("path")
   .datum(totalData)
   .attr("d", function(d) {
