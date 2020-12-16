@@ -162,3 +162,456 @@ Promise.all(promises).then(function(data) {
     svg.selectAll("path").attr("stroke-width", 1 / k);
   }
 });
+
+/*
+  SETTING UP THE SVG CANVAS
+  */
+const width = document.querySelector("#chart2").clientWidth;
+const height = document.querySelector("#chart2").clientHeight;
+const margin = {
+  top: 25,
+  left: 175,
+  right: 100,
+  bottom: 75
+};
+
+/*
+CREATE THE SVG CANVAS
+*/
+const svg = d3.select("#chart2")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+/*
+DEFINE DATA SET
+
+The following data set shows total honey production per year in
+the state of Vermont; these data are extracted from the following
+data set on Kaggle:
+
+https://www.kaggle.com/jessicali9530/honey-production
+
+*/
+
+const vermontHoney = [{
+    year: 1998,
+    production: 384000
+  },
+  {
+    year: 1999,
+    production: 396000
+  },
+  {
+    year: 2000,
+    production: 413000
+  },
+  {
+    year: 2001,
+    production: 567000
+  },
+  {
+    year: 2002,
+    production: 623000
+  },
+  {
+    year: 2003,
+    production: 581000
+  },
+  {
+    year: 2004,
+    production: 408000
+  },
+  {
+    year: 2005,
+    production: 546000
+  },
+  {
+    year: 2006,
+    production: 336000
+  },
+  {
+    year: 2007,
+    production: 320000
+  },
+  {
+    year: 2008,
+    production: 330000
+  },
+  {
+    year: 2009,
+    production: 245000
+  },
+  {
+    year: 2010,
+    production: 260000
+  },
+  {
+    year: 2011,
+    production: 172000
+  },
+  {
+    year: 2012,
+    production: 240000
+  }
+];
+
+const maineHoney = [{
+    year: 1998,
+    production: 260000
+  },
+  {
+    year: 1999,
+    production: 308000
+  },
+  {
+    year: 2000,
+    production: 231000
+  },
+  {
+    year: 2001,
+    production: 220000
+  },
+  {
+    year: 2002,
+    production: 451000
+  },
+  {
+    year: 2003,
+    production: 264000
+  },
+  {
+    year: 2004,
+    production: 217000
+  },
+  {
+    year: 2005,
+    production: 208000
+  },
+  {
+    year: 2006,
+    production: 253000
+  },
+  {
+    year: 2007,
+    production: 234000
+  },
+  {
+    year: 2008,
+    production: 294000
+  },
+  {
+    year: 2009,
+    production: 300000
+  },
+  {
+    year: 2010,
+    production: 205000
+  },
+  {
+    year: 2011,
+    production: 120000
+  },
+  {
+    year: 2012,
+    production: 136000
+  }
+];
+
+
+
+
+/*
+DEFINE SCALES
+
+The scale for the x-axis will map each YEAR in the data set
+to x-position;
+
+the scale for the y-axis will map TOTAL HONEY PRODUCTION
+to y-position.
+
+In this example, both scales use d3.scaleLinear().
+
+*/
+
+const xScale = d3.scaleLinear()
+  .domain([1998, 2012])
+  .range([margin.left, width - margin.right]);
+
+const yScale = d3.scaleLinear()
+  .domain([0, 700000])
+  .range([height - margin.bottom, margin.top]);
+
+/*
+CREATE A LINE GENERATOR
+
+To create a line chart2 in D3, we need to use a "line generator"
+function that's built into the D3 language.
+
+This line generator function can be invoked with d3.line().
+
+The purpose of this generator will be to accept as input a series
+of x- and y-coordinate values, based on the data set, and to return
+as output a complete specification for an SVG "path" element.
+
+The d3.line().x() method controls how to compute the x-position
+of each point in the line we are creating; the d3.line().y() method
+controls how to compute the y-position of each point in the line.
+Both of these methods are given accessor functions.
+
+In the example below, we are mapping the `year` property
+as the x-coordinate, and the `production` property as the
+y-coordinate for each point in the line.
+
+See the API for more information:
+https://github.com/d3/d3-shape/blob/v2.0.0/README.md#lines
+
+*/
+const line = d3.line()
+  .x(function(d) {
+    return xScale(d.year);
+  })
+  .y(function(d) {
+    return yScale(d.production);
+  })
+  .curve(d3.curveLinear);
+
+
+/*
+GENERATE AXES
+
+D3 has built in "axis constructors" that will automatically draw
+an axis for us, complete with tick marks and labels; these are built
+from scales we define elsewhere in the code, such as in the
+previous section
+
+*/
+const xAxis = svg.append("g")
+  .attr("class", "axis")
+  .attr("transform", `translate(0,${height-margin.bottom})`)
+  .call(d3.axisBottom().scale(xScale).tickFormat(d3.format("Y")));
+
+const yAxis = svg.append("g")
+  .attr("class", "axis")
+  .attr("transform", `translate(${margin.left},0)`)
+  .call(d3.axisLeft().scale(yScale));
+
+/*
+DRAW THE MARKS
+
+In this visualization, we will do two things:
+
+We'll first draw the line for our line chart2, by appending a
+new "path" element to the SVG canvas and computing its geometry
+(through the "d" attribute) with the help of our line generator
+function above.
+
+Then, after that, we'll draw circles for each point on top
+of the line we've drawn. We're doing this so that we can
+later create a tooltip with these points.
+
+*/
+
+let path = svg.append("path")
+  .datum(vermontHoney)
+  .attr("d", function(d) {
+    return line(d);
+  })
+  .attr("stroke", "steelblue")
+  .attr("fill", "none")
+  .attr("stroke-width", 2);
+
+let circle = svg.selectAll("circle")
+  .data(vermontHoney)
+  .enter()
+  .append("circle")
+  .attr("cx", function(d) {
+    return xScale(d.year);
+  })
+  .attr("cy", function(d) {
+    return yScale(d.production);
+  })
+  .attr("r", 10)
+  .attr("fill", "steelblue");
+
+
+/*
+ADDING AXIS LABELS
+
+*/
+svg.append("text")
+  .attr("class", "axisLabel")
+  .attr("x", width / 2)
+  .attr("y", height - 10)
+  .attr("text-anchor", "middle")
+  .text("Year");
+
+svg.append("text")
+  .attr("class", "axisLabel")
+  .attr("x", -height / 2)
+  .attr("y", 50)
+  .attr("text-anchor", "middle")
+  .attr("transform", "rotate(-90)")
+  .text("Total Production (lbs)");
+
+/*
+SIMPLE TOOLTIP
+
+We begin by creating a new div element inside the #chart2 container,
+giving it class 'tooltip'; note that this newly created div inherits
+(receives) the CSS properties defined by the .tooltip { ... } rule
+in the stylesheet
+
+*/
+
+
+const tooltip = d3.select("#chart2")
+  .append("div")
+  .attr("class", "tooltip");
+
+
+
+
+
+
+
+/*
+When we hover over any of the circles in the SVG, update the
+tooltip position and text contents;
+
+note that `circle` here is a reference to the variable named
+`circle` above (what is in that selection?)
+*/
+
+circle.on("mouseover", function(e, d) {
+
+  console.log(d);
+
+  let cx = +d3.select(this).attr("cx");
+  let cy = +d3.select(this).attr("cy");
+
+  tooltip.style("visibility", "visible")
+    .style("left", `${cx}px`)
+    .style("top", `${cy}px`)
+    .html(`<b>Year:</b> ${d.year}<br><b>Production:</b> ${d.production} lbs`);
+
+  d3.select(this)
+    .attr("stroke", "#F6C900")
+    .attr("stroke-width", 3);
+
+}).on("mouseout", function() {
+
+  tooltip.style("visibility", "hidden");
+
+  d3.select(this)
+    .attr("stroke", "none")
+    .attr("stroke-width", 0);
+
+});
+
+/* DATA UPDATE
+
+These buttons will toggle between data for Maine and data for Vermont.
+
+NOTE: There are no new circles to draw or old circles to remove with the data update, but
+I'm including both .enter() and .exit() selection operations here anyway.
+
+This demonstration applies a data update transition to the <path> element for
+the line chart2, AND an update to the <circle> elements drawn on top of the
+line (for the tooltip). If you don't need the tooltips, then you don't
+need to have circle points (and thus don't need to do a data update on
+the circles).
+*/
+
+d3.select("#vermont").on("click", function() {
+
+  // Updates the <path> -- note that all we need
+  // to do is retrieve the EXISTING <path> element,
+  // bind a new dataset with datum() (NOT .data()),
+  // and then transition to a new value for the "d"
+  // attribute that generates the line
+  path.datum(vermontHoney)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // Update the <circle> elements
+  let c = svg.selectAll("circle")
+    .data(vermontHoney, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.production);
+    })
+    .attr("r", 10)
+    .attr("fill", "steelblue")
+    .merge(c)
+    .transition() // a transition makes the changes visible...
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.production);
+    })
+    .attr("r", 10)
+    .attr("fill", "steelblue");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
+
+
+d3.select("#maine").on("click", function() {
+
+  // Updates the <path> -- note that all we need
+  // to do is retrieve the EXISTING <path> element,
+  // bind a new dataset with datum() (NOT .data()),
+  // and then transition to a new value for the "d"
+  // attribute that generates the line
+  path.datum(maineHoney)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // Update the <circle> elements
+  let c = svg.selectAll("circle")
+    .data(maineHoney, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.production);
+    })
+    .attr("r", 10)
+    .attr("fill", "steelblue")
+    .merge(c)
+    .transition() // a transition makes the changes visible...
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.production);
+    })
+    .attr("r", 10)
+    .attr("fill", "steelblue");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
