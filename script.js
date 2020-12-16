@@ -352,7 +352,8 @@ d3.select("#federal").on("click", function() {
   yScale.domain([0, 500])
     .range([height - margin.bottom, margin.top]);
 
-  yAxis.call(d3.axisLeft().scale(yScale));
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
 
   path.datum(federalData)
     .transition()
@@ -398,7 +399,8 @@ d3.select("#nonfederal").on("click", function() {
   yScale.domain([0, 7000])
     .range([height - margin.bottom, margin.top]);
 
-  yAxis.call(d3.axisLeft().scale(yScale));
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
 
   path.datum(nonFederalData)
     .transition()
