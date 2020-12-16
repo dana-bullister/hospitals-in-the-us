@@ -51,7 +51,9 @@ Promise.all(promises).then(function(data) {
     .enter()
     .append("path")
     .attr("d", path)
-    .attr("class", "state");
+    .attr("class", function(d) {
+      return d.featureType;
+    });
 
   // set color palette for points on map
 
