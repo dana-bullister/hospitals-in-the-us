@@ -668,3 +668,162 @@ d3.select("#nonfederal").on("click", function() {
     .attr("r", 0)
     .remove();
 });
+
+d3.select("#community").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#community").attr("class", "selected");
+
+  // update the y-axis scale
+  yScale.domain([0, 9000])
+    .range([height - margin.bottom, margin.top]);
+
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
+
+  // update the path variable
+  path.datum(communityData)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // update the data points
+  let c = svg.selectAll("circle")
+    .data(communityData, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)")
+    .merge(c)
+    .transition()
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
+
+d3.select("#nonProfit").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#nonProfit").attr("class", "selected");
+
+  // update the y-axis scale
+  yScale.domain([0, 9000])
+    .range([height - margin.bottom, margin.top]);
+
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
+
+  // update the path variable
+  path.datum(nonProfitData)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // update the data points
+  let c = svg.selectAll("circle")
+    .data(nonProfitData, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)")
+    .merge(c)
+    .transition()
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
+
+d3.select("#stateLocalGov").on("click", function() {
+
+  // add "selected" class to just this button
+  d3.selectAll("button").attr("class", null);
+  d3.select("#stateLocalGov").attr("class", "selected");
+
+  // update the y-axis scale
+  yScale.domain([0, 9000])
+    .range([height - margin.bottom, margin.top]);
+
+  yAxis.transition()
+    .duration(1500).call(d3.axisLeft().scale(yScale));
+
+  // update the path variable
+  path.datum(stateLocalGovData)
+    .transition()
+    .duration(1500)
+    .attr("d", line);
+
+  // update the data points
+  let c = svg.selectAll("circle")
+    .data(stateLocalGovData, function(d) {
+      return d.year;
+    });
+
+  c.enter().append("circle")
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)")
+    .merge(c)
+    .transition()
+    .duration(1500)
+    .attr("cx", function(d) {
+      return xScale(d.year);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.numHospitals);
+    })
+    .attr("r", 10)
+    .attr("fill", "rgb(55, 126, 184)");
+
+  c.exit()
+    .transition()
+    .duration(1500)
+    .attr("r", 0)
+    .remove();
+});
