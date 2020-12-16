@@ -142,14 +142,6 @@ font-weight: bold;
 font-size: 12pt;
 }
 
-/*
-The following CSS rule is used to style a tooltip div that is later created by D3;
-Note that this relies on several CSS properties:
-- the tooltip div must have position: absolute;
-- the container for the tooltip (above, #lineChart) must have position: relative;
-- we position the tooltip div through the top and left properties, which are relative to the top and left edges of the container (#lineChart)
-*/
-
 #lineChart {
     width: 100%;
     height: 80vh;
