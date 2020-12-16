@@ -47,7 +47,7 @@ Promise.all(promises).then(function(data) {
     .projection(projection);
 
   svg.selectAll("path")
-    .data(geoData.features)
+    .data(geoData.features.concat(geoData2.features))
     .enter()
     .append("path")
     .attr("d", path)
