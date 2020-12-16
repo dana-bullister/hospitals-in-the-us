@@ -361,7 +361,7 @@ circle.on("mouseover", function(e, d) {
   tooltip.style("visibility", "visible")
     .style("left", `${cx}px`)
     .style("top", `${cy}px`)
-    .html(`<b>Year:</b> ${d.year}<br><b>numHospitals:</b> ${d.numHospitals} lbs`);
+    .html(`<b>Year:</b> ${d.year}<br><b>Number of Hospitals:</b> ${d.numHospitals} lbs`);
 
   d3.select(this)
     .attr("stroke", "#F6C900")
