@@ -81,7 +81,7 @@ Promise.all(promises).then(function(data) {
     }).attr("cy", function(d) {
       var proj = projection([d.lon, d.lat]);
       return proj[1];
-    }).attr("r", 2.8)
+    }).attr("r", 2.2)
     .attr("fill", function(d) {
       return colorScale(d.type);
     })
@@ -115,8 +115,8 @@ Promise.all(promises).then(function(data) {
       tooltip.style("visibility", "hidden");
 
       d3.select(this)
+        .attr("r", 2.2 / k)
         .attr("stroke", "none");
-        .attr("r", 2.8 / k)
     });
 
   // filter the points rendered on the map by hospital type
@@ -158,7 +158,7 @@ Promise.all(promises).then(function(data) {
 
     svg.selectAll("*").attr("transform", e.transform);
 
-    svg.selectAll("circle").attr("r", 2.8 / k);
+    svg.selectAll("circle").attr("r", 2.2 / k);
     svg.selectAll("path").attr("stroke-width", 1 / k);
   }
 });
@@ -356,7 +356,7 @@ svg.append("text")
 
 svg.append("text")
   .attr("class", "axisLabel")
-  .attr("x", -height / 2.8)
+  .attr("x", -height / 2.2)
   .attr("y", 18)
   .attr("text-anchor", "middle")
   .attr("transform", "rotate(-90)")
