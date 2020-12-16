@@ -14,7 +14,8 @@ function parseCsv(d) {
 // array of promises comprised of reading in data files
 const promises = [
   d3.csv("./data/hospitals.csv", parseCsv),
-  d3.json("./geojson/gz_2010_us_040_00_20m.json")
+  d3.json("./geojson/gz_2010_us_040_00_20m.json"),
+  d3.json("./geojson/gz_2010_us_050_00_500k.json")
 ];
 
 // read in data files
@@ -23,6 +24,7 @@ Promise.all(promises).then(function(data) {
   // store the data as a variables
   const hospitals = data[0];
   const geoData = data[1];
+  const geoData2 = data[2];
 
   // store values for chart dimensions
   const width = document.querySelector("#chart").clientWidth;
