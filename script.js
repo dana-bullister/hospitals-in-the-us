@@ -59,7 +59,7 @@ Promise.all(promises).then(function(data) {
 
   const colorScale = d3.scaleOrdinal()
     .domain(["LONG TERM CARE", "GENERAL ACUTE CARE", "PSYCHIATRIC", "CRITICAL ACCESS", "REHABILITATION", "CHILDREN", "MILITARY", "WOMEN", "SPECIAL", "CHRONIC DISEASE"])
-    .range([d3.schemeSet1[0], d3.schemeSet1[1], d3.schemeSet1[2], d3.schemeSet1[3], d3.schemeSet1[4], "magenta", d3.schemeSet1[6], d3.schemeSet1[7], d3.schemeSet1[8], d3.schemeSet1[9]]);
+    .range([d3.schemeSet1[0], d3.schemeSet1[1], d3.schemeSet1[2], d3.schemeSet1[3], d3.schemeSet1[4], "magenta", d3.schemeSet1[6], d3.schemeSet1[7], d3.schemeSet1[8], "darkgoldenrod"]);
 
   // style checkmark boxes in options to be the color of the respective points in the map
   var all = document.getElementsByClassName('checkmark');
