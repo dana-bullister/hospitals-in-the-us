@@ -353,7 +353,7 @@ svg.append("text")
   .attr("y", 18)
   .attr("text-anchor", "middle")
   .attr("transform", "rotate(-90)")
-  .text("Total numHospitals (lbs)");
+  .text("Number of Hospitals");
 
 const tooltip = d3.select("#lineChart")
   .append("div")
