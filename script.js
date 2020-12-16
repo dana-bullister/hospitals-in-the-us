@@ -167,7 +167,7 @@ const width = document.querySelector("#lineChart").clientWidth;
 const height = document.querySelector("#lineChart").clientHeight;
 const margin = {
   top: 25,
-  left: 175,
+  left: 50,
   right: 100,
   bottom: 75
 };
@@ -346,14 +346,6 @@ svg.append("text")
   .attr("y", height - 10)
   .attr("text-anchor", "middle")
   .text("Year");
-
-svg.append("text")
-  .attr("class", "axisLabel")
-  .attr("x", -height / 2)
-  .attr("y", 50)
-  .attr("text-anchor", "middle")
-  .attr("transform", "rotate(-90)")
-  .text("Total numHospitals (lbs)");
 
 const tooltip = d3.select("#lineChart")
   .append("div")
