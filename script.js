@@ -179,77 +179,77 @@ const svg = d3.select("#lineChart")
 
 const federalData = [{
     year: 1975,
-    production: 382
+    numHospitals: 382
   },
   {
     year: 1980,
-    production: 359
+    numHospitals: 359
   },
   {
     year: 1990,
-    production: 337
+    numHospitals: 337
   },
   {
     year: 2000,
-    production: 245
+    numHospitals: 245
   },
   {
     year: 2005,
-    production: 226
+    numHospitals: 226
   },
   {
     year: 2010,
-    production: 213
+    numHospitals: 213
   },
   {
     year: 2013,
-    production: 213
+    numHospitals: 213
   },
   {
     year: 2014,
-    production: 213
+    numHospitals: 213
   },
   {
     year: 2015,
-    production: 212
+    numHospitals: 212
   }
 ];
 
 const nonFederalData = [{
     year: 1975,
-    production: 6774
+    numHospitals: 6774
   },
   {
     year: 1980,
-    production: 6606
+    numHospitals: 6606
   },
   {
     year: 1990,
-    production: 6312
+    numHospitals: 6312
   },
   {
     year: 2000,
-    production: 5565
+    numHospitals: 5565
   },
   {
     year: 2005,
-    production: 5530
+    numHospitals: 5530
   },
   {
     year: 2010,
-    production: 5541
+    numHospitals: 5541
   },
   {
     year: 2013,
-    production: 5473
+    numHospitals: 5473
   },
   {
     year: 2014,
-    production: 5414
+    numHospitals: 5414
   },
   {
     year: 2015,
-    production: 5352
+    numHospitals: 5352
   }
 ];
 
@@ -266,7 +266,7 @@ const line = d3.line()
     return xScale(d.year);
   })
   .y(function(d) {
-    return yScale(d.production);
+    return yScale(d.numHospitals);
   })
   .curve(d3.curveLinear);
 
@@ -297,7 +297,7 @@ let circle = svg.selectAll("circle")
     return xScale(d.year);
   })
   .attr("cy", function(d) {
-    return yScale(d.production);
+    return yScale(d.numHospitals);
   })
   .attr("r", 10)
   .attr("fill", "steelblue");
@@ -315,7 +315,7 @@ svg.append("text")
   .attr("y", 50)
   .attr("text-anchor", "middle")
   .attr("transform", "rotate(-90)")
-  .text("Total Production (lbs)");
+  .text("Total numHospitals (lbs)");
 
 const tooltip = d3.select("#lineChart")
   .append("div")
@@ -331,7 +331,7 @@ circle.on("mouseover", function(e, d) {
   tooltip.style("visibility", "visible")
     .style("left", `${cx}px`)
     .style("top", `${cy}px`)
-    .html(`<b>Year:</b> ${d.year}<br><b>Production:</b> ${d.production} lbs`);
+    .html(`<b>Year:</b> ${d.year}<br><b>numHospitals:</b> ${d.numHospitals} lbs`);
 
   d3.select(this)
     .attr("stroke", "#F6C900")
@@ -364,7 +364,7 @@ d3.select("#federal").on("click", function() {
       return xScale(d.year);
     })
     .attr("cy", function(d) {
-      return yScale(d.production);
+      return yScale(d.numHospitals);
     })
     .attr("r", 10)
     .attr("fill", "steelblue")
@@ -375,7 +375,7 @@ d3.select("#federal").on("click", function() {
       return xScale(d.year);
     })
     .attr("cy", function(d) {
-      return yScale(d.production);
+      return yScale(d.numHospitals);
     })
     .attr("r", 10)
     .attr("fill", "steelblue");
@@ -405,7 +405,7 @@ d3.select("#nonfederal").on("click", function() {
       return xScale(d.year);
     })
     .attr("cy", function(d) {
-      return yScale(d.production);
+      return yScale(d.numHospitals);
     })
     .attr("r", 10)
     .attr("fill", "steelblue")
@@ -416,7 +416,7 @@ d3.select("#nonfederal").on("click", function() {
       return xScale(d.year);
     })
     .attr("cy", function(d) {
-      return yScale(d.production);
+      return yScale(d.numHospitals);
     })
     .attr("r", 10)
     .attr("fill", "steelblue");
