@@ -118,8 +118,8 @@ h1 {
 
 .county {
   fill: transparent;
-  stroke: green;
-  stroke-opacity: 0.8;
+  stroke: black;
+  stroke-opacity: .03;
 }
 
 .tooltip {
