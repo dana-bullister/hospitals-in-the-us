@@ -163,9 +163,6 @@ Promise.all(promises).then(function(data) {
   }
 });
 
-/*
-  SETTING UP THE SVG CANVAS
-  */
 const width = document.querySelector("#lineChart").clientWidth;
 const height = document.querySelector("#lineChart").clientHeight;
 const margin = {
@@ -175,24 +172,10 @@ const margin = {
   bottom: 75
 };
 
-/*
-CREATE THE SVG CANVAS
-*/
 const svg = d3.select("#lineChart")
   .append("svg")
   .attr("width", width)
   .attr("height", height);
-
-/*
-DEFINE DATA SET
-
-The following data set shows total honey production per year in
-the state of Federal Data; these data are extracted from the following
-data set on Kaggle:
-
-https://www.kaggle.com/jessicali9530/honey-production
-
-*/
 
 const federalData = [{
     year: 1998,
@@ -318,22 +301,6 @@ const nonFederalData = [{
   }
 ];
 
-
-
-
-/*
-DEFINE SCALES
-
-The scale for the x-axis will map each YEAR in the data set
-to x-position;
-
-the scale for the y-axis will map TOTAL HONEY PRODUCTION
-to y-position.
-
-In this example, both scales use d3.scaleLinear().
-
-*/
-
 const xScale = d3.scaleLinear()
   .domain([1998, 2012])
   .range([margin.left, width - margin.right]);
@@ -342,31 +309,6 @@ const yScale = d3.scaleLinear()
   .domain([0, 700000])
   .range([height - margin.bottom, margin.top]);
 
-/*
-CREATE A LINE GENERATOR
-
-To create a line lineChart in D3, we need to use a "line generator"
-function that's built into the D3 language.
-
-This line generator function can be invoked with d3.line().
-
-The purpose of this generator will be to accept as input a series
-of x- and y-coordinate values, based on the data set, and to return
-as output a complete specification for an SVG "path" element.
-
-The d3.line().x() method controls how to compute the x-position
-of each point in the line we are creating; the d3.line().y() method
-controls how to compute the y-position of each point in the line.
-Both of these methods are given accessor functions.
-
-In the example below, we are mapping the `year` property
-as the x-coordinate, and the `production` property as the
-y-coordinate for each point in the line.
-
-See the API for more information:
-https://github.com/d3/d3-shape/blob/v2.0.0/README.md#lines
-
-*/
 const line = d3.line()
   .x(function(d) {
     return xScale(d.year);
@@ -376,16 +318,6 @@ const line = d3.line()
   })
   .curve(d3.curveLinear);
 
-
-/*
-GENERATE AXES
-
-D3 has built in "axis constructors" that will automatically draw
-an axis for us, complete with tick marks and labels; these are built
-from scales we define elsewhere in the code, such as in the
-previous section
-
-*/
 const xAxis = svg.append("g")
   .attr("class", "axis")
   .attr("transform", `translate(0,${height-margin.bottom})`)
@@ -395,22 +327,6 @@ const yAxis = svg.append("g")
   .attr("class", "axis")
   .attr("transform", `translate(${margin.left},0)`)
   .call(d3.axisLeft().scale(yScale));
-
-/*
-DRAW THE MARKS
-
-In this visualization, we will do two things:
-
-We'll first draw the line for our line lineChart, by appending a
-new "path" element to the SVG canvas and computing its geometry
-(through the "d" attribute) with the help of our line generator
-function above.
-
-Then, after that, we'll draw circles for each point on top
-of the line we've drawn. We're doing this so that we can
-later create a tooltip with these points.
-
-*/
 
 let path = svg.append("path")
   .datum(federalData)
@@ -434,11 +350,6 @@ let circle = svg.selectAll("circle")
   .attr("r", 10)
   .attr("fill", "steelblue");
 
-
-/*
-ADDING AXIS LABELS
-
-*/
 svg.append("text")
   .attr("class", "axisLabel")
   .attr("x", width / 2)
@@ -454,34 +365,9 @@ svg.append("text")
   .attr("transform", "rotate(-90)")
   .text("Total Production (lbs)");
 
-/*
-SIMPLE TOOLTIP
-
-We begin by creating a new div element inside the #lineChart container,
-giving it class 'tooltip'; note that this newly created div inherits
-(receives) the CSS properties defined by the .tooltip { ... } rule
-in the stylesheet
-
-*/
-
-
 const tooltip = d3.select("#lineChart")
   .append("div")
   .attr("class", "tooltip");
-
-
-
-
-
-
-
-/*
-When we hover over any of the circles in the SVG, update the
-tooltip position and text contents;
-
-note that `circle` here is a reference to the variable named
-`circle` above (what is in that selection?)
-*/
 
 circle.on("mouseover", function(e, d) {
 
@@ -509,33 +395,13 @@ circle.on("mouseover", function(e, d) {
 
 });
 
-/* DATA UPDATE
-
-These buttons will toggle between data for Nonfederal Data and data for Federal Data.
-
-NOTE: There are no new circles to draw or old circles to remove with the data update, but
-I'm including both .enter() and .exit() selection operations here anyway.
-
-This demonstration applies a data update transition to the <path> element for
-the line lineChart, AND an update to the <circle> elements drawn on top of the
-line (for the tooltip). If you don't need the tooltips, then you don't
-need to have circle points (and thus don't need to do a data update on
-the circles).
-*/
-
 d3.select("#federal").on("click", function() {
 
-  // Updates the <path> -- note that all we need
-  // to do is retrieve the EXISTING <path> element,
-  // bind a new dataset with datum() (NOT .data()),
-  // and then transition to a new value for the "d"
-  // attribute that generates the line
   path.datum(federalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
-  // Update the <circle> elements
   let c = svg.selectAll("circle")
     .data(federalData, function(d) {
       return d.year;
@@ -551,7 +417,7 @@ d3.select("#federal").on("click", function() {
     .attr("r", 10)
     .attr("fill", "steelblue")
     .merge(c)
-    .transition() // a transition makes the changes visible...
+    .transition()
     .duration(1500)
     .attr("cx", function(d) {
       return xScale(d.year);
@@ -572,17 +438,11 @@ d3.select("#federal").on("click", function() {
 
 d3.select("#nonfederal").on("click", function() {
 
-  // Updates the <path> -- note that all we need
-  // to do is retrieve the EXISTING <path> element,
-  // bind a new dataset with datum() (NOT .data()),
-  // and then transition to a new value for the "d"
-  // attribute that generates the line
   path.datum(nonFederalData)
     .transition()
     .duration(1500)
     .attr("d", line);
 
-  // Update the <circle> elements
   let c = svg.selectAll("circle")
     .data(nonFederalData, function(d) {
       return d.year;
@@ -598,7 +458,7 @@ d3.select("#nonfederal").on("click", function() {
     .attr("r", 10)
     .attr("fill", "steelblue")
     .merge(c)
-    .transition() // a transition makes the changes visible...
+    .transition()
     .duration(1500)
     .attr("cx", function(d) {
       return xScale(d.year);
