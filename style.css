@@ -145,8 +145,13 @@ h1 {
   width: 100%;
   display: inline-block;
   margin-top: 0;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   padding: 0;
+}
+
+ul {
+  margin-top: 0em;
+  padding-top: 0em;
 }
 
 button.selected {
