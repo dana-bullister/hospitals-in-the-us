@@ -81,7 +81,7 @@ Promise.all(promises).then(function(data) {
     }).attr("cy", function(d) {
       var proj = projection([d.lon, d.lat]);
       return proj[1];
-    }).attr("r", 2.2)
+    }).attr("r", 2.2 / .8)
     .attr("fill", function(d) {
       return colorScale(d.type);
     })
@@ -108,14 +108,14 @@ Promise.all(promises).then(function(data) {
       d3.select(this) // and make the data point on the map increase in radius size
         .attr("r", 10 / k)
         .attr("stroke", "white")
-        .attr("stroke-width", 2 / k);
+        .attr("stroke-width", 2.2 / k);
 
     }).on("mouseout", function() {
 
       tooltip.style("visibility", "hidden");
 
       d3.select(this)
-        .attr("r", 2.2 / k)
+        .attr("r", 2.2 / (.8 * k))
         .attr("stroke", "none");
     });
 
@@ -158,7 +158,7 @@ Promise.all(promises).then(function(data) {
 
     svg.selectAll("*").attr("transform", e.transform);
 
-    svg.selectAll("circle").attr("r", 2.2 / k);
+    svg.selectAll("circle").attr("r", 2.2 / (.8 * k));
     svg.selectAll("path").attr("stroke-width", 1 / k);
   }
 });
