@@ -15,7 +15,7 @@ function parseCsv(d) {
 const promises = [
   d3.csv("./data/hospitals.csv", parseCsv),
   d3.json("./geojson/2010_us_state_border_data.json"),
-  d3.json("./geojson/2010_us_county_border_data.json")
+  //d3.json("./geojson/2010_us_county_border_data.json")
 ];
 
 // read in data files
@@ -24,7 +24,7 @@ Promise.all(promises).then(function(data) {
   // store the data as a variables
   const hospitals = data[0];
   const geoDataStates = data[1];
-  const geoDataCounties = data[2];
+  //const geoDataCounties = data[2];
 
   // store values for chart dimensions
   const width = document.querySelector("#map-chart").clientWidth;
@@ -47,13 +47,15 @@ Promise.all(promises).then(function(data) {
     .projection(projection);
 
   svg.selectAll("path")
-    .data(geoDataStates.features.concat(geoDataCounties.features)) // concatenate state and county border data
+    .data(geoDataStates.features)
+    //.data(geoDataStates.features.concat(geoDataCounties.features)) // concatenate state and county border data
     .enter()
     .append("path")
     .attr("d", path)
-    .attr("class", function(d) { // tag each border feature as either corresponding to a state or a county
-      return d.featureType;
-    });
+    .attr("class", "state");
+  //.attr("class", function(d) { // tag each border feature as either corresponding to a state or a county
+  //  return d.featureType;
+  //});
 
   // set color palette for points on map
 
