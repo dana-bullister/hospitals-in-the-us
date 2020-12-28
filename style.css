@@ -153,11 +153,6 @@ button.selected {
   background-color: rgb(174,174,174);
 }
 
-#line-chart-note {
-  display: block;
-  font-size: 10pt;
-}
-
 .axisLabel {
 font-size: 16pt;
 font-weight: bold;
